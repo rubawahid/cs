@@ -20,7 +20,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
-             echo config('app.timezone');
-             echo env('APP_NAME');
+             
     }
 }

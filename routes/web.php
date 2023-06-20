@@ -30,7 +30,9 @@ Route::get('/', function () {
 Route::resource('/admin/products', ProductsController::class);
 
 
+//http://127.0.0.1.:8000/users/
 
-
-//Route::get('/users', [UserController::class, 'index']);
-//Route::get('/users/{first}/{last}', [UserController::class, 'show']);
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/info', [UserController::class, 'info']);
+Route::get('/users/info', [UserController::class, 'show']);
+Route::get('/users/{first}/{last}', [UserController::class, 'show']);
