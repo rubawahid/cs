@@ -3,35 +3,52 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProductRequest;
+use App\Http\Requests\Admin\categoryRequest;
 use App\Models\Category;
-use App\Models\Product;
+use App\Models\category;
+use App\Models\categoryImage;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class ProductsController extends Controller
+class categoriesController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        if ($request->method() == 'GET') {
+        $categories = Category::all(); // Collection (array)
+       View::share([
+        'categories' => $categories,
+        'status_options' => Product::statusOptions(),
+       ]);
+    }
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-       // $products= DB::table('products')
-       // ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
-        //->select([
-           // 'products.*',
-           // 'categories.name as category_name',
-       // ])
-       // ->get(); //array
-        // SELECT * FROM products
-        $products = Product::leftJoin('categories', 'categories.id', '=', 'products.category_id')
-        ->select([
-            'products.*',
-            'categories.name as category_name',
-        ])->get();
-        
 
-        return view('admin.products.index', ['title' => 'Products list', 'products' => $products]);
+        // $categories= DB::table('categories')
+        // ->leftJoin('categories', 'categories.id', '=', 'categories.category_id')
+        //->select([
+        // 'categories.*',
+        // 'categories.name as category_name',
+        // ])
+        // ->get(); //array
+        // SELECT * FROM categories
+        $products = Product::leftJoin('categories', 'categories.id', '=', 'categories.category_id')
+            ->select([
+                'product.*',
+                'categories.name as category_name',
+            ])
+            ->filter($request->query())
+            ->paginate(2); //collection of Product model
+
+
+        return view('admin.categories.index', ['title' => 'categories list', 'categories' => $categories]);
     }
 
     /**
@@ -39,47 +56,59 @@ class ProductsController extends Controller
      */
     public function create()
     {
-       $categories = Category::all(); // Collection (array)
-       return view('admin.products.create', [
-        'product' => new Product(),
-        'categories' => $categories,
-        'status_options' => [
-            'active' => 'Active',
-            'draft' => 'Draft',
-            'archived' => 'Archived',
-        ],
-       ]);
+        return view('admin.categories.create', [
+            'product' => new Product(),
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ProductRequest $request)
+    public function store(categoryRequest $request)
     {
 
         //$rules = $this->rules();
-       // $messages = $this->messages();
-       // $request->validate($rules, $messages);
+        // $messages = $this->messages();
+        // $request->validate($rules, $messages);
 
+        // mass assignment
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image'); // return UploadedFile object
+            $path = $file->store('uploads', 'public'); //return file path after store
+            $data['image'] = $path;
+        }
+        $date['user_id'] = Auth::id();
+        $product = product::create($data);
 
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->slug = $request->input('slug1');
-        $product->category_id = $request->input('category_id');
-        $product->description = $request->input('description');
-        $product->short_descriptions = $request->input('short_Description');
-        $product->price = $request->input('price');
-        $product->compare_price = $request->input('compare_price');
-        $product->status = $request->input('status', 'active');
-        $product->save();
-         // prg: post redirect get
+        if ($request->hasfile('gallery')) {
+            //array of UploadFile
+            foreach ($request->file('gallery') as $file) {
+                ProductImage::create([
+                    'product_id' => $product->id,
+                    'image' => $file->store('uploads/images', 'public'),
+                ]);
+            }
+        }
+
+        // $category = new category();
+        // $category->name = $request->input('name');
+        // $category->slug = $request->input('slug1');
+        // $category->category_id = $request->input('category_id');
+        // $category->description = $request->input('description');
+        // $category->short_descriptions = $request->input('short_Description');
+        // $category->price = $request->input('price');
+        // $category->compare_price = $request->input('compare_price');
+        // $category->status = $request->input('status', 'active');
+        // $category->save();
+        // prg: post redirect get
         return redirect()
-        ->route('products.index')
-        ->with('success', "product({$product->name}) created");  // Add flash message with name=success
+            ->route('categories.index')
+            ->with('success', "category({$category->name}) created");  // Add flash message with name=success
 
 
 
-        
+
 
 
     }
@@ -95,69 +124,112 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(category $category)
     {
-       //$product = Product::where('id', '=', $id)->first(); // return Model
-       // if (!$product) {
+        //$category = category::where('id', '=', $id)->first(); // return Model
+        // if (!$category) {
         // abort(404);
-      // }
-       $product = Product::findOrfail($id); // return Model object or Null
-       $categories = Category::all();
-       return view('admin.products.edit', [
-        'product' => $product,
-        'categories' => $categories,
-        'status_options' => [
-            'active' => 'Active',
-            'draft' => 'Draft',
-            'archived' => 'Archived',
-        ],
-       ]);
+        // }
+        // $category = category::findOrfail($id); // return Model object or Null
+        //$gallery = ProductImage::Where('product_id', '=', $product->id)->get();
+        return view('admin.categories.edit', [
+            'product' => $product,
+            'gallery' => $product->gallery,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ProductRequest $request, string $id)
+    public function update(categoryRequest $request, string $id)
     {
-        $rules = $this->rules($id);
-        $messages = $this->messages();
-        $request->validate($rules, $messages);
-
-       
+        //$rules = $this->rules($id);
+        // $messages = $this->messages();
+        //$request->validate($rules, $messages);
 
 
-          $product = Product::findOrfail($id);
-        $product->name = $request->input('name');
-        $product->slug = $request->input('slug1');
-        $product->category_id = $request->input('category_id');
-        $product->description = $request->input('description');
-        $product->short_description = $request->input('short_description');
-        $product->price = $request->input('price');
-        $product->compare_price = $request->input('compare_price');
-        $product->status = $request->input('status', 'active');
-        $product->save();
-         // prg: post redirect get
+
+
+        $category = category::findOrfail($id);
+        // Mass assignment
+        $data = $request->validated();
+        if ($request->hasFile('image')) {
+            $file = $request->file('image'); // return UploadedFile object
+            $path = $file->store('uploads', 'public'); //return file path after store
+            $data['image'] = $path;
+        }
+        $old_image = $category->image;
+        $category->update($data);
+        if ($old_image && $old_image != $category->image) {
+            Storage::disk('public')->delete($old_image);
+        }
+
+        if ($category->hasfile('gallery')) {
+            //array of UploadFile
+            foreach ($request->file('gallery') as $file) {
+                categoryImage::create([
+                    'category_id' => $category->id,
+                    'image' => $file->store('uploads/images', 'public'),
+                ]);
+            }
+        }
+        // $category->name = $request->input('name');
+        // $category->slug = $request->input('slug1');
+        //$category->category_id = $request->input('category_id');
+        // $category->description = $request->input('description');
+        //$category->short_description = $request->input('short_description');
+        // $category->price = $request->input('price');
+        //$category->compare_price = $request->input('compare_price');
+        // $category->status = $request->input('status', 'active');
+        // $category->save();
+        // prg: post redirect get
         return redirect()
-        ->route('products.index')
-        ->with('success', "product({$product->name}) update"); 
+            ->route('categories.index')
+            ->with('success', "category({$category->name}) update");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(category $category)
     {
-        // Product::where('id', '=', $id)->delete();
-       // product::destroy($id);
+        // category::where('id', '=', $id)->delete();
+        // category::destroy($id);
 
-        $product = Product::findOrFail($id);
-        $product->delete();
-
-        
+        //  $category = category::findOrFail($id);
+        $category->delete();
 
         return redirect()
-        ->route('products.index')
-        ->with('success', "product({$product->name}) deleted"); 
+            ->route('categories.index')
+            ->with('success', "category({$category->name}) deleted");
+    }
+
+    public function trashed()
+    {
+        $categories = $category = category::onlyTrashed()->paginate();
+        return view('admin.categories.trashed', [
+            'categories' => $categories
+        ]);
+    }
+    public function restore($id)
+    {
+        $category = category::onlyTrashed()->findOrFail($id);
+        $category->restore();
+        return redirect()
+            ->route('categories.index')
+            ->with('success', "category ({$category->name}) restored");
+    }
+
+    public function forceDelete($id)
+    {
+        $category = category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+        if ($category->image) {
+            Storage::disk('public')->delete($category->image);
+        }
+        return redirect()
+        ->route('categories.index')
+        ->with('success', "category ({$category->name}) deleted forover!");
     }
 
     protected function messages()
@@ -165,7 +237,7 @@ class ProductsController extends Controller
         return [
             'required' => ':attribute field is required!!',
             'unique' => 'The value alredy exists!',
-            'name.required' => 'The product name is mandatory!',
+            'name.required' => 'The category name is mandatory!',
 
         ];
     }
@@ -174,15 +246,15 @@ class ProductsController extends Controller
     {
         return [
             'name' => 'required|max:255|min:3',
-             'slug' => 'required|unique:products,slug',
-             'category_id' => 'nullable|int|exists:categories,id',
-             'description' => 'nullable|string',
-             'short_description' => 'nullable|string|max:500',
-             'price' => 'required|numeric|min:0',
-             'compare_price' => 'nullable|numeric|min:0|gt:price',
-             'image' => 'nullable|image|dimensions:min_width=400,min_height=300|max:1024',
-             'status' => 'required|in:active,draft,archived',
-  
+            'slug' => 'required|unique:categories,slug',
+            'category_id' => 'nullable|int|exists:categories,id',
+            'description' => 'nullable|string',
+            'short_description' => 'nullable|string|max:500',
+            'price' => 'required|numeric|min:0',
+            'compare_price' => 'nullable|numeric|min:0|gt:price',
+            'image' => 'nullable|image|max:1024',
+            'status' => 'required|in:active,draft,archived',
+
         ];
     }
 }

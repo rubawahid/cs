@@ -13,7 +13,7 @@
 
 CodeMirror.defineMode("apl", function() {
   var builtInOps = {
-    ".": "innerProduct",
+    ".": "innercategory",
     "\\": "scan",
     "/": "reduce",
     "⌿": "reduce1Axis",

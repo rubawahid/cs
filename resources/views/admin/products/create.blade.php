@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-<h2 class="mb-4 fs-3">New product</h2>
-<form action="{{ route('products.store') }}" method="post">
+<h2 class="mb-4 fs-3">New category</h2>
+<form action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
   {{ csrf_field() }}
 
-  @include('admin.products._form', [
+  @include('admin.categories._form', [
     'submit_label' => 'create',
     ])
 </form>

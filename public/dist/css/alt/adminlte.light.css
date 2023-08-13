@@ -24275,42 +24275,42 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   border-bottom-color: #dee2e6;
 }
 
-.products-list {
+.categories-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.products-list > .item {
+.categories-list > .item {
   border-radius: 0.25rem;
   background-color: #fff;
   padding: 10px 0;
 }
 
-.products-list > .item::after {
+.categories-list > .item::after {
   display: block;
   clear: both;
   content: "";
 }
 
-.products-list .product-img {
+.categories-list .category-img {
   float: left;
 }
 
-.products-list .product-img img {
+.categories-list .category-img img {
   height: 50px;
   width: 50px;
 }
 
-.products-list .product-info {
+.categories-list .category-info {
   margin-left: 60px;
 }
 
-.products-list .product-title {
+.categories-list .category-title {
   font-weight: 600;
 }
 
-.products-list .product-description {
+.categories-list .category-description {
   color: #6c757d;
   display: block;
   overflow: hidden;
@@ -24318,12 +24318,12 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   white-space: nowrap;
 }
 
-.product-list-in-card > .item {
+.category-list-in-card > .item {
   border-radius: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.product-list-in-card > .item:last-of-type {
+.category-list-in-card > .item:last-of-type {
   border-bottom-width: 0;
 }
 
@@ -25278,13 +25278,13 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   width: 100%;
 }
 
-.product-image {
+.category-image {
   max-width: 100%;
   height: auto;
   width: 100%;
 }
 
-.product-image-thumbs {
+.category-image-thumbs {
   -ms-flex-align: stretch;
   align-items: stretch;
   display: -ms-flexbox;
@@ -25292,7 +25292,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   margin-top: 2rem;
 }
 
-.product-image-thumb {
+.category-image-thumb {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
   border-radius: 0.25rem;
   background-color: #fff;
@@ -25304,18 +25304,18 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
   padding: 0.5rem;
 }
 
-.product-image-thumb img {
+.category-image-thumb img {
   max-width: 100%;
   height: auto;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
-.product-image-thumb:hover {
+.category-image-thumb:hover {
   opacity: .5;
 }
 
-.product-share a {
+.category-share a {
   margin-right: .5rem;
 }
 

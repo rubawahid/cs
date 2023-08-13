@@ -22,7 +22,19 @@ class CategoryControlle extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        $categories = Category::all();
+        return view('admin.categories.create', [
+            'category' => new Category(),
+            'categories' => $categories,
+            'status_options' => [
+                'active' => 'Active',
+                'draft' => 'Draft',
+                'archived' => 'Archived',
+            ],
+        ]);
+        
+
+        
     }
 
     /**

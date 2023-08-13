@@ -1,7 +1,7 @@
 /**
  * AdminLTE Demo Menu
  * ------------------
- * You should not use this file in production.
+ * You should not use this file in categoryion.
  * This file is for demo purposes only.
  */
 

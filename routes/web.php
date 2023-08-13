@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\ProductsController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,24 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])
+    ->middleware('password.confirm')
+    ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    
 });
 
-//Route::get('/admin/products', [ProductsController::class, 'index']);
-//Route::get('/admin/products/create', [ProductsController::class, 'create']);
-//Route::post('/admin/products', [ProductsController::class, 'store']);
-//Route::get('/admin/products/{id}', [ProductsController::class, 'show']);
-//Route::get('/admin/products/{id}/edit', [ProductsController::class, 'edit']);
-//Route::put('/admin/products/{id}', [ProductsController::class, 'update']);
-//Route::delete('/admin/products/{id}', [ProductsController::class, 'destory']);
+require __DIR__.'/auth.php';
 
-Route::resource('/admin/products', ProductsController::class);
+require __DIR__.'/admin.php';
+require __DIR__.'/shop.php';
 
-
-//http://127.0.0.1.:8000/users/
-
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/info', [UserController::class, 'info']);
-Route::get('/users/info', [UserController::class, 'show']);
-Route::get('/users/{first}/{last}', [UserController::class, 'show']);

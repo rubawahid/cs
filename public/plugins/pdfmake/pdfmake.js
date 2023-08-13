@@ -29703,7 +29703,7 @@ exports.setTyped(TYPED_OK);
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -29758,7 +29758,7 @@ module.exports = adler32;
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -29838,7 +29838,7 @@ module.exports = {
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -29901,7 +29901,7 @@ module.exports = crc32;
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -31783,7 +31783,7 @@ exports.deflateTune = deflateTune;
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -32136,7 +32136,7 @@ module.exports = function inflate_fast(strm, start) {
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -33700,7 +33700,7 @@ exports.inflateUndermine = inflateUndermine;
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -34051,7 +34051,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -34091,7 +34091,7 @@ module.exports = {
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -35321,7 +35321,7 @@ exports._tr_align = _tr_align;
 //
 // 1. The origin of this software must not be misrepresented; you must not
 //   claim that you wrote the original software. If you use this software
-//   in a product, an acknowledgment in the product documentation would be
+//   in a category, an acknowledgment in the category documentation would be
 //   appreciated but is not required.
 // 2. Altered source versions must be plainly marked as such, and must not be
 //   misrepresented as being the original software.
@@ -66976,7 +66976,7 @@ for (var _i23 = 0, _arr = ['moveTo', 'lineTo', 'quadraticCurveTo', 'bezierCurveT
   _loop(command);
 }
 
-var StandardNames = ['.notdef', '.null', 'nonmarkingreturn', 'space', 'exclam', 'quotedbl', 'numbersign', 'dollar', 'percent', 'ampersand', 'quotesingle', 'parenleft', 'parenright', 'asterisk', 'plus', 'comma', 'hyphen', 'period', 'slash', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'colon', 'semicolon', 'less', 'equal', 'greater', 'question', 'at', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'bracketleft', 'backslash', 'bracketright', 'asciicircum', 'underscore', 'grave', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'braceleft', 'bar', 'braceright', 'asciitilde', 'Adieresis', 'Aring', 'Ccedilla', 'Eacute', 'Ntilde', 'Odieresis', 'Udieresis', 'aacute', 'agrave', 'acircumflex', 'adieresis', 'atilde', 'aring', 'ccedilla', 'eacute', 'egrave', 'ecircumflex', 'edieresis', 'iacute', 'igrave', 'icircumflex', 'idieresis', 'ntilde', 'oacute', 'ograve', 'ocircumflex', 'odieresis', 'otilde', 'uacute', 'ugrave', 'ucircumflex', 'udieresis', 'dagger', 'degree', 'cent', 'sterling', 'section', 'bullet', 'paragraph', 'germandbls', 'registered', 'copyright', 'trademark', 'acute', 'dieresis', 'notequal', 'AE', 'Oslash', 'infinity', 'plusminus', 'lessequal', 'greaterequal', 'yen', 'mu', 'partialdiff', 'summation', 'product', 'pi', 'integral', 'ordfeminine', 'ordmasculine', 'Omega', 'ae', 'oslash', 'questiondown', 'exclamdown', 'logicalnot', 'radical', 'florin', 'approxequal', 'Delta', 'guillemotleft', 'guillemotright', 'ellipsis', 'nonbreakingspace', 'Agrave', 'Atilde', 'Otilde', 'OE', 'oe', 'endash', 'emdash', 'quotedblleft', 'quotedblright', 'quoteleft', 'quoteright', 'divide', 'lozenge', 'ydieresis', 'Ydieresis', 'fraction', 'currency', 'guilsinglleft', 'guilsinglright', 'fi', 'fl', 'daggerdbl', 'periodcentered', 'quotesinglbase', 'quotedblbase', 'perthousand', 'Acircumflex', 'Ecircumflex', 'Aacute', 'Edieresis', 'Egrave', 'Iacute', 'Icircumflex', 'Idieresis', 'Igrave', 'Oacute', 'Ocircumflex', 'apple', 'Ograve', 'Uacute', 'Ucircumflex', 'Ugrave', 'dotlessi', 'circumflex', 'tilde', 'macron', 'breve', 'dotaccent', 'ring', 'cedilla', 'hungarumlaut', 'ogonek', 'caron', 'Lslash', 'lslash', 'Scaron', 'scaron', 'Zcaron', 'zcaron', 'brokenbar', 'Eth', 'eth', 'Yacute', 'yacute', 'Thorn', 'thorn', 'minus', 'multiply', 'onesuperior', 'twosuperior', 'threesuperior', 'onehalf', 'onequarter', 'threequarters', 'franc', 'Gbreve', 'gbreve', 'Idotaccent', 'Scedilla', 'scedilla', 'Cacute', 'cacute', 'Ccaron', 'ccaron', 'dcroat'];
+var StandardNames = ['.notdef', '.null', 'nonmarkingreturn', 'space', 'exclam', 'quotedbl', 'numbersign', 'dollar', 'percent', 'ampersand', 'quotesingle', 'parenleft', 'parenright', 'asterisk', 'plus', 'comma', 'hyphen', 'period', 'slash', 'zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'colon', 'semicolon', 'less', 'equal', 'greater', 'question', 'at', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'bracketleft', 'backslash', 'bracketright', 'asciicircum', 'underscore', 'grave', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'braceleft', 'bar', 'braceright', 'asciitilde', 'Adieresis', 'Aring', 'Ccedilla', 'Eacute', 'Ntilde', 'Odieresis', 'Udieresis', 'aacute', 'agrave', 'acircumflex', 'adieresis', 'atilde', 'aring', 'ccedilla', 'eacute', 'egrave', 'ecircumflex', 'edieresis', 'iacute', 'igrave', 'icircumflex', 'idieresis', 'ntilde', 'oacute', 'ograve', 'ocircumflex', 'odieresis', 'otilde', 'uacute', 'ugrave', 'ucircumflex', 'udieresis', 'dagger', 'degree', 'cent', 'sterling', 'section', 'bullet', 'paragraph', 'germandbls', 'registered', 'copyright', 'trademark', 'acute', 'dieresis', 'notequal', 'AE', 'Oslash', 'infinity', 'plusminus', 'lessequal', 'greaterequal', 'yen', 'mu', 'partialdiff', 'summation', 'category', 'pi', 'integral', 'ordfeminine', 'ordmasculine', 'Omega', 'ae', 'oslash', 'questiondown', 'exclamdown', 'logicalnot', 'radical', 'florin', 'approxequal', 'Delta', 'guillemotleft', 'guillemotright', 'ellipsis', 'nonbreakingspace', 'Agrave', 'Atilde', 'Otilde', 'OE', 'oe', 'endash', 'emdash', 'quotedblleft', 'quotedblright', 'quoteleft', 'quoteright', 'divide', 'lozenge', 'ydieresis', 'Ydieresis', 'fraction', 'currency', 'guilsinglleft', 'guilsinglright', 'fi', 'fl', 'daggerdbl', 'periodcentered', 'quotesinglbase', 'quotedblbase', 'perthousand', 'Acircumflex', 'Ecircumflex', 'Aacute', 'Edieresis', 'Egrave', 'Iacute', 'Icircumflex', 'Idieresis', 'Igrave', 'Oacute', 'Ocircumflex', 'apple', 'Ograve', 'Uacute', 'Ucircumflex', 'Ugrave', 'dotlessi', 'circumflex', 'tilde', 'macron', 'breve', 'dotaccent', 'ring', 'cedilla', 'hungarumlaut', 'ogonek', 'caron', 'Lslash', 'lslash', 'Scaron', 'scaron', 'Zcaron', 'zcaron', 'brokenbar', 'Eth', 'eth', 'Yacute', 'yacute', 'Thorn', 'thorn', 'minus', 'multiply', 'onesuperior', 'twosuperior', 'threesuperior', 'onehalf', 'onequarter', 'threequarters', 'franc', 'Gbreve', 'gbreve', 'Idotaccent', 'Scedilla', 'scedilla', 'Cacute', 'cacute', 'Ccaron', 'ccaron', 'dcroat'];
 
 var _class$3;
 /**
@@ -68958,7 +68958,7 @@ var GlyphVariationProcessor = /*#__PURE__*/function () {
           } else {
             axisScalar = (axis.endCoord - normalizedCoords[j] + Number.EPSILON) / (axis.endCoord - axis.peakCoord + Number.EPSILON);
           }
-        } // take product of all the axis scalars
+        } // take category of all the axis scalars
 
 
         scalar *= axisScalar;
@@ -77071,7 +77071,7 @@ for (var i = 0, v = 1; i < 255; ++i) {
 // generator polynomials up to degree 30
 // (should match with polynomials in JIS X 0510:2004 Appendix A)
 //
-// generator polynomial of degree K is product of (x-\alpha^0), (x-\alpha^1),
+// generator polynomial of degree K is category of (x-\alpha^0), (x-\alpha^1),
 // ..., (x-\alpha^(K-1)). by convention, we omit the K-th coefficient (always 1)
 // from the result; also other coefficients are written in terms of the exponent
 // to \alpha to avoid the redundant calculation. (see also calculateecc below.)

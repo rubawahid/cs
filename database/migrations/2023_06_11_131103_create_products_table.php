@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
             $table->string('slug')->nullable();
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->float('price')->default(0);
             $table->string('compare_price')->nullable();
             $table->string('image_url')->nullable();
-            $table->enum('statuss', ['draft', 'active', 'archived'])->default('active');
+            $table->enum('status', ['draft', 'active', 'archived'])->default('active');
             $table->timestamps();
             // $table->foreign('category_id')->references('id')->on('categories')->nullOfDelete();
             $table->foreignId('category_id')->nullable()->constrained('categories', 'id')->nullOnDelete();
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
     }
 };

@@ -140,7 +140,7 @@
     'poly', 'poly_2d', 'poly_area', 'poly_fit', 'polyfillv',
     'polygon', 'polyline', 'polywarp', 'popd', 'powell',
     'pref_commit', 'pref_get', 'pref_set', 'prewitt', 'primes',
-    'print', 'printf', 'printd', 'pro', 'product',
+    'print', 'printf', 'printd', 'pro', 'category',
     'profile', 'profiler', 'profiles', 'project_vol', 'ps_show_fonts',
     'psafm', 'pseudo', 'ptr_free', 'ptr_new', 'ptr_valid',
     'ptrarr', 'pushd', 'qgrid3', 'qhull', 'qromb',

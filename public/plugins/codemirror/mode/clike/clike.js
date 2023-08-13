@@ -581,7 +581,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
       "AnyVal App Application Array BufferedIterator BigDecimal BigInt Char Console Either " +
       "Enumeration Equiv Error Exception Fractional Function IndexedSeq Int Integral Iterable " +
       "Iterator List Map Numeric Nil NotNull Option Ordered Ordering PartialFunction PartialOrdering " +
-      "Product Proxy Range Responder Seq Serializable Set Specializable Stream StringBuilder " +
+      "category Proxy Range Responder Seq Serializable Set Specializable Stream StringBuilder " +
       "StringContext Symbol Throwable Traversable TraversableOnce Tuple Unit Vector " +
 
       /* package java.lang */
@@ -755,7 +755,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
                 "gl_TextureMatrixInverseTranspose " +
                 "gl_NormalScale gl_DepthRange gl_ClipPlane " +
                 "gl_Point gl_FrontMaterial gl_BackMaterial gl_LightSource gl_LightModel " +
-                "gl_FrontLightModelProduct gl_BackLightModelProduct " +
+                "gl_FrontLightModelcategory gl_BackLightModelcategory " +
                 "gl_TextureColor gl_EyePlaneS gl_EyePlaneT gl_EyePlaneR gl_EyePlaneQ " +
                 "gl_FogParameters " +
                 "gl_MaxLights gl_MaxClipPlanes gl_MaxTextureUnits gl_MaxTextureCoords " +

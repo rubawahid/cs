@@ -13,75 +13,59 @@
 
 <div class="row">
   <div class="col md-8">
+    <x-form.input lable="category Name" id="name" name="name" value="{{ $category->name }}" />
+
+    <x-form.input lable="URL slug" id="slug" name="slug" value="{{ $category->slug }}" />
+
+
+    <x-form.textarea id="description" name="desription" lable="Desription" value="{{ $category->desription }}" />
+    <x-form.textarea id="short_description" name="short_desription" lable="Short Desription" value="{{ $category->short_desription }}" />
+
   <div class="mb-3">
-  <label for="name">Product name</label>
-  <div>
-    <input type="text" class="form-control @error( 'name') is-invalid @enderror" id="name" name="name" value="{{ old('name', $product->name) }}" placeholder="Product name">
-    @error('name')
-    <p class="invalid-feedback">{{$message}}</p>
-    @enderror
+    <label for="image">category Image</label>
+    <div>
+      <input type="file" class="form-control" id="gallery" name="gallery[]" multiple placeholder="category Gallery">
+    </div>
   </div>
 </div>
-<div class="mb-3">
-  <label for="slug">URL slug</label>
-  <div>
-    <input type="text" class="form-control" id="slug" name="slug" value="{{ old ('slug', $product->slug) }}" placeholder="URL slug">
-    @error('slug')
-    <p class="text-danger">{{$message}}</p>
-    @enderror
+@if($gallery ?? false)
+<div class="row">
+  @foreach($gallery as $image)
+  <div class="col-md-3">
+    <img src=" {{ $image->url }} " class="img-fluid" alt="">
   </div>
+  @endforeach
 </div>
+@endif
+<div class="col md-4">
+  <div class="form-floating mb-3">
+    <label for="status">status</label>
+    <div>
+      @foreach ($status_options as $value => $label)
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="status" id="status_{{ $value }}" @checked($value==old('status', $category->status))>
+        <label class="form-check-label" for="status_{{ $value }}">
+          {{$label}}
+        </label>
+      </div>
+      @endforeach
 
-<div class="form-floating mb-3">
-  <label for="Desription">Desription</label>
-  <textarea class="form-control" id="description" name="Desription" placeholder="Desription">{{ old ('Desription', $product->Desription) }}</textarea>
-</div>
-<div class="form-floating mb-3">
-  <label for="short_Desription">Short Desription</label>
-  <textarea class="form-control" id="short_Description" name="short_Desription" placeholder="short_Desription">{{ old ('short_Description', $product->short_Description) }}</textarea>
-</div>
+    </div>
   </div>
-  <div class="col md-4">
-  <div class="form-floating mb-3">
-  <label for="status">status</label>
-  <div>
+  <x-form.select  name="category_id" id="category_id" lable="Category" :value="$category->category_id" :options="$categories->pluck('name', 'id')" />
   
-    @foreach ($status_options as $value => $label)
-    <div class="form-check">
-  <input class="form-check-input" @checked($label == old('status', $product->status)) type="radio" name="status" id="status_{{ $value }}" value="{{ $value }}" >
-  <label class="form-check-label" for="status_{{ $value }}">
-    {{$label}}
-  </label>
-</div>
-    @endforeach
-  
-</div>
-  </div>
-  <div class="form-floating mb-3">
-  <label for="category_id">Category</label>
-  <div>
-  <select name="category_id" id="category_id" class="form-select form-control">
-    @foreach ($categories as $category)
-    <option></option>
-    <option @selected($category->id == old('category_id', $product->category_id))  value="{{ $category->id}}">{{ $category->name }}</option>
-    @endforeach
-  </select>
+  <x-form.input type="number" lable="price" id="price" name="price" value="{{ $category->price }}" />
 
-</div>
-  </div>
+  <x-form.input type="number" lable="Compare price" id="Compare_price" name="Compare_price" value="{{ $category->Compare_price }}" />
+
+
   <div class="form-floating mb-3">
-  <label for="Price">Product Price</label>
-  <input type="number" step="0.1" min="0" class="form-control" id="price" name="price" value="{{ old ('price', $product->price) }}" placeholder="Product Price">
-</div>
-<div class="form-floating mb-3">
-  <label for="compare_Price">Compare Price</label>
-  <input type="number" step="0.1" min="0" class="form-control" id="compare_price" name="compare_price" value="{{ old('compare_price', $product->compare_price) }}" placeholder="Compare Price">
-</div>
-<div class="form-floating mb-3">
-  <label for="image">Product Image</label>
-  <input type="file" class="form-control" id="image" name="image" placeholder="Compare Product Image">
-</div>
+    <img src="{{  $category->image_url }}" width="100" alt="">
+
+    <input type="file" class="form-control" id="image" name="image" placeholder="Compare category Image">
+    <label for="image">category Image</label>
   </div>
+</div>
 </div>
 
 
